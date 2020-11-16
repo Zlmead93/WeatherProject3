@@ -47,3 +47,6 @@
   transition: all 200ms ease;
   border: none;
 }
+p {
+  color: #fff;
+}
