@@ -29,10 +29,30 @@ function displayTemp(response) {
     response.data.main.temp
   );
 }
+function formatHours (timestamp) {
+return `${hours}:${minutes}`;
+
+}
+
+function displayForecast (response) {
+ 
+  let forecastElement = document.querySelector("#forecast")
+  let forecast = response.data.list[0];
+  forecastElement.innerHTML =
+   `<li class="list-group-item"><i class="fas fa-cloud"></i> </br> 
+            ${formatHours(forecast.dt*1000)} </br>
+          ${Math.round(forecast.main.temp_max)}°</li>`;
+          
+  
+}
+
 function defaultCity(city) {
   let apiKey = "5dbe4b73ade41818331f8e929d9c90fe";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(displayTemp);
+
+  apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayForecast);
 }
 defaultCity("London");
 
