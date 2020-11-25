@@ -5,6 +5,7 @@ h1 {
 }
 small {
   margin-left: 5px;
+  text-transform: capitalize;
 }
 li {
   list-style: none;
@@ -30,7 +31,7 @@ ul {
   display: block;
   padding: 10px;
   max-width: 600px;
-  height: 350;
+  max-height: 450px;
   border: 1px solid;
   border-radius: 20px;
   color: #fff;
@@ -43,6 +44,7 @@ ul {
   font-size: 40px;
   font-family: "Source Code Pro", monospace;
 }
+
 .btn {
   width: 110px;
   height: 150px;
