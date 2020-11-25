@@ -48,6 +48,11 @@ input {
   font-family: "Source Code Pro", monospace;
 }
 
+.button {
+  margin-left: 15px;
+  margin-bottom: 15px;
+}
+
 .btn {
   width: 110px;
   height: 150px;
@@ -64,4 +69,5 @@ input {
 }
 .coderLink {
   color: #fff;
+  text-align: center;
 }
