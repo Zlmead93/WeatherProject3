@@ -38,11 +38,34 @@ function displayTemp(response) {
    "src", 
    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
 }
-
+function displayForecast(response) {
+console.log(response.data);
+let forecastElement = document.querySelector("#forecastThree");
+let forecast = response.data.list[1];
+forecastElement.innerHTML = `<button type="button" class="btn btn-primary" id = "forecastThree"><img src= "http://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png"/>
+          ${Math.round(forecast.main.temp_max)}°C</button>`
+          
+forecast = response.data.list[2];
+forecastElement.innerHTML += `<button type="button" class="btn btn-primary" id = "forecastThree"><img src= "http://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png"/>
+          ${Math.round(forecast.main.temp_max)}°C</button>`
+          forecast = response.data.list[3];
+forecastElement.innerHTML += `<button type="button" class="btn btn-primary" id = "forecastThree"><img src= "http://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png"/>
+          ${Math.round(forecast.main.temp_max)}°C</button>`
+          forecast = response.data.list[4];
+forecastElement.innerHTML += `<button type="button" class="btn btn-primary" id = "forecastThree"><img src= "http://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png"/>
+          ${Math.round(forecast.main.temp_max)}°C</button>`
+          forecast = response.data.list[5];
+forecastElement.innerHTML += `<button type="button" class="btn btn-primary" id = "forecastThree"><img src= "http://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png"/>
+          ${Math.round(forecast.main.temp_max)}°C</button>`
+          
+          
+}
 function defaultCity(city) {
   let apiKey = "5dbe4b73ade41818331f8e929d9c90fe";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(displayTemp);
+  apiURL = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=metric`;
+  axios.get(apiURL).then(displayForecast);
 }
 defaultCity("London");
 
