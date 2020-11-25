@@ -27,8 +27,6 @@ if (minutes < 10){minutes=`0${minutes}`;
 today.innerHTML = ` ${date} ${month} ${year} ${hours}:${minutes}`;
 
 function displayTemp(response) {
-  console.log(response.data);
- 
   document.querySelector("#city").innerHTML = response.data.name;
   document.querySelector("#temp").innerHTML = Math.round(
     response.data.main.temp);
@@ -41,24 +39,34 @@ function displayTemp(response) {
    "src", 
    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
 }
+function formatTime (timestamp){
+  let date = new Date (timestamp);
+  let hour = date.getHours();
+  if (hour < 10){hour=`0${hour}`;
+}
+  let minute = date.getMinutes();
+   if (minute < 10){minute=`0${minute}`;
+}
+return `${hour}:${minute}`;
+}
 function displayForecast(response) {
 console.log(response.data);
 let forecastElement = document.querySelector("#forecastThree");
 let forecast = response.data.list[1];
-forecastElement.innerHTML = `<button type="button" class="btn btn-primary" id = "forecastThree"><img src= "http://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png"/>
+forecastElement.innerHTML = `<button type="button" class="btn btn-primary" id = "forecastThree"><small>${formatTime(forecast.dt*1000)}</small><img src= "http://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png"/>
           ${Math.round(forecast.main.temp_max)}°C</button>`
           
 forecast = response.data.list[2];
-forecastElement.innerHTML += `<button type="button" class="btn btn-primary" id = "forecastThree"><img src= "http://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png"/>
+forecastElement.innerHTML += `<button type="button" class="btn btn-primary" id = "forecastThree"><small>${formatTime(forecast.dt*1000)}</small><img src= "http://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png"/>
           ${Math.round(forecast.main.temp_max)}°C</button>`
           forecast = response.data.list[3];
-forecastElement.innerHTML += `<button type="button" class="btn btn-primary" id = "forecastThree"><img src= "http://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png"/>
+forecastElement.innerHTML += `<button type="button" class="btn btn-primary" id = "forecastThree"><small>${formatTime(forecast.dt*1000)}</small><img src= "http://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png"/>
           ${Math.round(forecast.main.temp_max)}°C</button>`
           forecast = response.data.list[4];
-forecastElement.innerHTML += `<button type="button" class="btn btn-primary" id = "forecastThree"><img src= "http://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png"/>
+forecastElement.innerHTML += `<button type="button" class="btn btn-primary" id = "forecastThree"><small>${formatTime(forecast.dt*1000)}</small><img src= "http://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png"/>
           ${Math.round(forecast.main.temp_max)}°C</button>`
           forecast = response.data.list[5];
-forecastElement.innerHTML += `<button type="button" class="btn btn-primary" id = "forecastThree"><img src= "http://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png"/>
+forecastElement.innerHTML += `<button type="button" class="btn btn-primary" id = "forecastThree"><small>${formatTime(forecast.dt*1000)}</small><img src= "http://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png"/>
           ${Math.round(forecast.main.temp_max)}°C</button>`
           
           
