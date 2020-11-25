@@ -1,6 +1,20 @@
 h1 {
   font-family: "Source Code Pro", monospace;
-  font-weight: bold;
+  font-weight: 200;
+  margin-bottom: 0px;
+}
+small {
+  margin-left: 5px;
+}
+li {
+  list-style: none;
+  text-align: right;
+  font-family: "Source Code Pro", monospace;
+  font-weight: 200;
+}
+ul {
+  margin-top: -75px;
+  margin-bottom: 40px;
 }
 
 .date {
@@ -8,13 +22,7 @@ h1 {
   padding-left: 130px;
   font-size: 20px;
   font-family: "Source Code Pro", monospace;
-  font-weight: bold;
-}
-
-li {
-  list-style: none;
-  text-align: right;
-  font-family: "Source Code Pro", monospace;
+  font-weight: 200;
 }
 
 .container {
@@ -22,13 +30,19 @@ li {
   display: block;
   padding: 10px;
   max-width: 600px;
-  height: 400px;
+  height: 350;
   border: 1px solid;
   border-radius: 20px;
   color: #fff;
   margin: 30px auto;
 }
-
+.container-wrapper {
+  max-width: 600px;
+}
+.tempuratureIcon {
+  font-size: 40px;
+  font-family: "Source Code Pro", monospace;
+}
 .btn {
   width: 110px;
   height: 100px;

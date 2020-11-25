@@ -24,35 +24,25 @@ let minutes = now.getMinutes();
 today.innerHTML = ` ${date} ${month} ${year} ${hours}:${minutes}`;
 
 function displayTemp(response) {
+  console.log(response.data);
+ 
   document.querySelector("#city").innerHTML = response.data.name;
   document.querySelector("#temp").innerHTML = Math.round(
-    response.data.main.temp
-  );
-}
-function formatHours (timestamp) {
-return `${hours}:${minutes}`;
-
-}
-
-function displayForecast (response) {
- 
-  let forecastElement = document.querySelector("#forecast")
-  let forecast = response.data.list[0];
-  forecastElement.innerHTML =
-   `<li class="list-group-item"><i class="fas fa-cloud"></i> </br> 
-            ${formatHours(forecast.dt*1000)} </br>
-          ${Math.round(forecast.main.temp_max)}°</li>`;
-          
-  
+    response.data.main.temp);
+    document.querySelector("#humidity").innerHTML = Math.round(response.data.main.humidity);
+    document.querySelector("#wind").innerHTML = Math.round(response.data.wind.speed);
+     document.querySelector("#description").innerHTML = response.data.weather[0].description;
+     document.querySelector("#feelsLike").innerHTML = Math.round(response.data.main.feels_like);
+    let iconElement = document.querySelector("#icon");
+    iconElement.setAttribute(
+   "src", 
+   `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
 }
 
 function defaultCity(city) {
   let apiKey = "5dbe4b73ade41818331f8e929d9c90fe";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(displayTemp);
-
-  apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=metric`;
-  axios.get(apiUrl).then(displayForecast);
 }
 defaultCity("London");
 
